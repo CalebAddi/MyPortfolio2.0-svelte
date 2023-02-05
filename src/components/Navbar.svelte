@@ -7,20 +7,21 @@
 	<nav class="nav-container">
 			<ul class="list-content">
 				<li>
-					<a class='menu__item' href="/"><h3>Web Dev</h3></a>
+					<a class='menu__item' href="/"><h3>Web Development</h3></a>
 				</li>
+				
 				<li>
-					<a class='menu__item' href="/src/components/GameDev.svelte"><h3>Game Dev</h3></a>
+					<a class='menu__item' href="/src/components/GameDev.svelte"><h3>Game Development</h3></a>
 				</li>
+
 				<li>
-					<a class='menu__item' href="#review"><h3>UI/UX Design</h3></a>
+					<a class='menu__item' href="#review"><h3>AI Development</h3></a>
 				</li>
-				<li>
-					<a class='menu__item' href="/src/components/Playlists.svelte"><h3>App Dev</h3></a>
-				</li> 
+
 				<li>
 					<a class='menu__item' href="#about"><h3>About</h3></a>
 				</li>
+
 				<li>
 					<a class='menu__item' href="#contact"><h3>Contact</h3></a>
 				</li>

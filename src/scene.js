@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { Color } from 'three';
 
+
 const scene = new THREE.Scene(); 
 scene.background = new Color('#3d414c')
 
@@ -21,14 +22,11 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3
 
 //---------- Texture Loader ----------//
 
-const textureLoad = new THREE.TextureLoader();
-const texture = textureLoad.load('./assets/earth.jpg');
+const earthTexture = new THREE.TextureLoader().load('EarthUV.jpg');
 
 //---------- Materials ----------//
 
-const material = new THREE.MeshLambertMaterial({
-    map: texture
-});
+const material = new THREE.MeshBasicMaterial({ map: earthTexture });
 
 const particleMaterial = new THREE.PointsMaterial({
     size: .0055,
