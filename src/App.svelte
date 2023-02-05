@@ -20,6 +20,10 @@
 	<div class="nav-container">
 		<Navbar />
 	</div>
+
+	<div>
+		<canvas bind:this={el}></canvas>
+	</div>
 </main>
 
 <style>
@@ -51,6 +55,3 @@
 			}
 		}
 </style>
-
-
-<canvas bind:this={el}></canvas>

@@ -7,24 +7,28 @@ scene.background = new Color('#3d414c')
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 // Objects
-const geometry = new THREE.SphereGeometry(2.5, 64, 64);
+const geometry = new THREE.SphereGeometry(1.9, 64, 64);
 const particlesGeometry = new THREE.BufferGeometry;
 const particleCount = 12000;
 
 const posArray = new Float32Array(particleCount * 3);
 
-for(let i = 0; i < particleCount * 3; i++) {
-    // posArray[i] = Math.random();
+for(let i = 0; i < particleCount * 3; i++) 
+{
     posArray[i] = (Math.random() - 0.5) * 14;
 }
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
+//---------- Texture Loader ----------//
+
+const textureLoad = new THREE.TextureLoader();
+const texture = textureLoad.load('./assets/earth.jpg');
+
 //---------- Materials ----------//
 
-const material = new THREE.PointsMaterial({
-    size: 0.009,
+const material = new THREE.MeshLambertMaterial({
+    map: texture
 });
-
 
 const particleMaterial = new THREE.PointsMaterial({
     size: .0055,
@@ -62,7 +66,8 @@ let targetY = 0;
 const windowHalfX = window.innerWidth / 2;
 const windowHalfY = window.innerHeight / 2;
 
-function onDocumentMouseMove(e) {
+function onDocumentMouseMove(e) 
+{
     mouseX = (e.clientX - windowHalfX);
     mouseY = (e.clientY - windowHalfY);
 }
@@ -81,7 +86,8 @@ const animate = () => {
     sphere.rotation.z = .5 * elapsedTime;
     particleMesh.rotation.y = -.1 * elapsedTime;
 
-    if(mouseX > 0 || mouseX < 0) {
+    if(mouseX > 0 || mouseX < 0) 
+    {
         particleMesh.rotation.y = mouseY * (elapsedTime * 0.00007);
         particleMesh.rotation.x = mouseX * (elapsedTime * 0.00007);
     }
