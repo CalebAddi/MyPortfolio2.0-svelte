@@ -3,12 +3,13 @@ import { Color } from 'three';
 
 
 const scene = new THREE.Scene(); 
-scene.background = new Color('#3d414c')
+scene.background = new Color('#101010')
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 // Objects
-const geometry = new THREE.SphereGeometry(1.9, 64, 64);
+const geometry = new THREE.SphereGeometry(1.8, 64, 64);
+const geometry2 = new THREE.SphereGeometry(.5, 64, 64);
 const particlesGeometry = new THREE.BufferGeometry;
 const particleCount = 12000;
 
@@ -22,22 +23,25 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3
 
 //---------- Texture Loader ----------//
 
-const earthTexture = new THREE.TextureLoader().load('EarthUV.jpg');
+const earthTexture = new THREE.TextureLoader().load('earth.jpg');
+const moonTexture = new THREE.TextureLoader().load('moon.jpg');
 
 //---------- Materials ----------//
 
 const material = new THREE.MeshBasicMaterial({ map: earthTexture });
+const moonMaterial = new THREE.MeshBasicMaterial({ map: moonTexture });
 
 const particleMaterial = new THREE.PointsMaterial({
     size: .0055,
     color: 0xffffff
 });
-material.color = new THREE.Color(0x000);
+// material.color = new THREE.Color(0x000);
 //----------------------------------//
 
 
 // Mesh
 const sphere = new THREE.Mesh(geometry, material);
+const moon = new THREE.Mesh(geometry2, moonMaterial);
 const particleMesh = new THREE.Points(particlesGeometry, particleMaterial);
 
 //---------- Lights ----------// 
@@ -48,9 +52,14 @@ light.position.set(50, 50, 50);
 scene.add( lightAmbi, light );
 
 
+// render
 let renderer;
 scene.add(particleMesh, sphere);
+scene.add(moon)
 camera.position.z = 5;
+
+moon.position.x = - 3;
+moon.position.y = 1.5;
 
 //---------------------------------------------------------//
 
@@ -81,7 +90,7 @@ const animate = () => {
     const elapsedTime = clock.getElapsedTime()
 
         // Update objects
-    sphere.rotation.z = .5 * elapsedTime;
+    sphere.rotation.y = .5 * elapsedTime;
     particleMesh.rotation.y = -.1 * elapsedTime;
 
     if(mouseX > 0 || mouseX < 0) 
@@ -91,8 +100,11 @@ const animate = () => {
     }
 
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y);
-    sphere.rotation.x += .2 * (targetY - sphere.rotation.x);
-    sphere.position.z += -.2 * (targetY - sphere.rotation.x);
+    sphere.position.z += -.002 * (targetY - sphere.rotation.x);
+
+    moon.rotation.y += .05 * (targetX - moon.rotation.y);
+    moon.rotation.x += .002 * (targetY - sphere.rotation.x);
+    moon.rotation.z += -.002 * (targetY - sphere.rotation.x);
 
     // Update Orbital Controls
     // controls.update()
