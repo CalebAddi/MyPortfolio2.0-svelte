@@ -58,7 +58,7 @@ scene.add(particleMesh, sphere);
 scene.add(moon)
 camera.position.z = 5;
 
-moon.position.x = - 3;
+moon.position.x = - 2.7;
 moon.position.y = 1.5;
 
 //---------------------------------------------------------//
@@ -100,7 +100,7 @@ const animate = () => {
     }
 
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y);
-    sphere.position.z += -.002 * (targetY - sphere.rotation.x);
+    sphere.position.z += -.001 * (targetY - sphere.rotation.x);
 
     moon.rotation.y += .05 * (targetX - moon.rotation.y);
     moon.rotation.x += .002 * (targetY - sphere.rotation.x);

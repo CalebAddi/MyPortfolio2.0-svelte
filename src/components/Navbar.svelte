@@ -1,5 +1,5 @@
 <script>
-
+	import toggleWebDev from '../App.svelte';
 </script>
 
 <main>
@@ -7,23 +7,23 @@
 	<nav class="nav-container">
 			<ul class="list-content">
 				<li>
-					<a class='menu__item' href="#webdev"><h3>Web Development</h3></a>
+					<a class='menu__item' href="#webdev" on:click="{() => toggleWebDev}"><h3>Web Development</h3></a>
 				</li>
 				
 				<li>
-					<a class='menu__item' href="#gamedev"><h3>Game Development</h3></a>
+					<a class='menu__item' href="#gamedev" on:click="{() => toggleWebDev}"><h3>Game Development</h3></a>
 				</li>
 
 				<li>
-					<a class='menu__item' href="#aidev"><h3>AI Development</h3></a>
+					<a class='menu__item' href="#aidev" on:click="{() => toggleWebDev}"><h3>AI Development</h3></a>
 				</li>
 
 				<li>
-					<a class='menu__item' href="#about"><h3>About</h3></a>
+					<a class='menu__item' href="#about" on:click="{() => toggleWebDev}"><h3>About</h3></a>
 				</li>
 
 				<li>
-					<a class='menu__item' href="#contact"><h3>Contact</h3></a>
+					<a class='menu__item' href="#contact" on:click="{() => toggleWebDev}"><h3>Contact</h3></a>
 				</li>
 			</ul>
 		</nav> 
