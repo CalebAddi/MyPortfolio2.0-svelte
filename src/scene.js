@@ -100,7 +100,7 @@ const animate = () => {
     }
 
     sphere.rotation.y += .5 * (targetX - sphere.rotation.y);
-    sphere.position.z += -.001 * (targetY - sphere.rotation.x);
+    sphere.position.z += -.0001 * (targetY - sphere.rotation.x);
 
     moon.rotation.y += .05 * (targetX - moon.rotation.y);
     moon.rotation.x += .002 * (targetY - sphere.rotation.x);

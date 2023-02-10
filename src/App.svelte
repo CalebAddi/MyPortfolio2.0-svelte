@@ -4,16 +4,8 @@
 
 	import { onMount } from 'svelte';
 	import { createScene } from "./scene";
-  import WebDev from './components/WebDev.svelte';
 
 	let el;
-	let showWebDev = false;
-
-	function toggleWebDev() {
-		showWebDev = !showWebDev;
-	}
-  
-  export { toggleWebDev };
 
 	onMount(() => {
 		createScene(el);
@@ -32,14 +24,6 @@
 	<div>
 		<canvas bind:this={el}></canvas>
 	</div>
-
-	{#if toggleWebDev}
-    <section>
-      <div>
-        <WebDev />
-      </div>
-    </section>
-  {/if}
 </main>
 
 <style>
